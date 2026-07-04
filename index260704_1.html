@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="de" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ETF & Aktien Performance</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Zum Inhalt springen</a>
+  <main id="main" class="shell">
+    <section class="panel hero">
+      <div>
+        <p class="eyebrow">Meilenstein 1</p>
+        <h1>ETF- und Aktien-Performance per WKN</h1>
+        <p class="lead">Gib WKN und Stückzahl ein. Die App holt Kurzbezeichnung sowie annualisierte 1J-, 3J- und 5J-Performance über eine serverlose Vercel-Route.</p>
+      </div>
+      <button type="button" class="theme-toggle" data-theme-toggle aria-label="Switch to light mode">
+        <span aria-hidden="true">◐</span>
+      </button>
+    </section>
+
+    <section class="panel">
+      <form id="lookupForm" class="grid" novalidate>
+        <div class="field">
+          <label for="wkn">WKN</label>
+          <input id="wkn" name="wkn" type="text" maxlength="6" autocomplete="off" placeholder="A0RPWH" required>
+        </div>
+        <div class="field">
+          <label for="shares">Stückzahl</label>
+          <input id="shares" name="shares" type="number" step="any" min="0" placeholder="12.5" required>
+        </div>
+        <div class="actions">
+          <button type="submit" class="btn btn-primary">Daten abrufen</button>
+          <button type="button" id="fillDemo" class="btn btn-secondary">Demo laden</button>
+        </div>
+      </form>
+      <p id="formMessage" class="message" role="status" aria-live="polite"></p>
+    </section>
+
+    <section class="results-grid" aria-label="Ergebnisfelder">
+      <article class="panel result-card">
+        <p class="result-label">Kurzbezeichnung</p>
+        <p id="outName" class="result-value">—</p>
+      </article>
+      <article class="panel result-card">
+        <p class="result-label">Performance 12 Monate p.a.</p>
+        <p id="out1y" class="result-value">—</p>
+      </article>
+      <article class="panel result-card">
+        <p class="result-label">Performance 3 Jahre p.a.</p>
+        <p id="out3y" class="result-value">—</p>
+      </article>
+      <article class="panel result-card">
+        <p class="result-label">Performance 5 Jahre p.a.</p>
+        <p id="out5y" class="result-value">—</p>
+      </article>
+    </section>
+
+    <section class="panel meta-panel">
+      <div class="meta-row"><span>Wertpapierart</span><strong id="outType">—</strong></div>
+      <div class="meta-row"><span>Stückzahl</span><strong id="outShares">—</strong></div>
+      <div class="meta-row"><span>Quelle</span><strong id="outSource">—</strong></div>
+      <div class="meta-row"><span>Status</span><strong id="outStatus">Bereit</strong></div>
+    </section>
+  </main>
+  <script src="./app.js" defer></script>
+</body>
+</html>
